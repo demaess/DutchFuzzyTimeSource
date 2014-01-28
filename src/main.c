@@ -19,7 +19,7 @@ static word_t first_word_between;
 static word_t second_word;
 static word_t second_word_between;
 static word_t third_word;
-static const char *hours[] = {"twaalf","een","twee","drie","vier","vijf","zes","zeven","acht","negen","tien","elf","twaalf"};
+static const char *hours[] = {"twèlef","ieën","twieë","droë","vier","voëf","zes","zeive","acht","neige","tien","elf","twèlef"};
 
 void text_layer_setup(Window * window, TextLayer * layer, GRect frame, GFont font) {
 	layer = text_layer_create(frame);
@@ -39,7 +39,7 @@ static const char *hour_string(int h) {
 }
 static const char *min_string(int m) {
 	if(m == 5) {
-		return "vijf";
+		return "voëf";
 	} else {
 		return "tien";
 	}
@@ -70,36 +70,36 @@ static void nederlands_format(int h, int m) {
 			h++;
 		}
 		first_word_between.text = hour_string(h);
-		second_word_between.text = "uur";
+		second_word_between.text = "ier";
 	} else if(m == 30) {
-		first_word_between.text = "half";
+		first_word_between.text = "alver";
 		second_word_between.text = hour_string(h + 1);
 	} else if(m == 15) {
-		first_word.text = "kwart";
-		second_word.text = "over";
+		first_word.text = "kotie";
+		second_word.text = "oever";
 		third_word.text = hour_string(h);
 	} else if(m == 45) {
-		first_word.text = "kwart";
-		second_word.text = "voor";
+		first_word.text = "kotie";
+		second_word.text = "van";
 		third_word.text = hour_string(h + 1);
 	} else if(m > 30) {
 		if(m < 45) {
 			first_word.text = min_string(m - 30);
-			second_word.text = "over half";
+			second_word.text = "oever alver";
 			third_word.text = hour_string(h + 1);
 		} else {
 			first_word.text = min_string(60 - m);
-			second_word.text = "voor";
+			second_word.text = "van";
 			third_word.text = hour_string(h + 1);
 		}
 	} else {
 		if(m > 15) {
 			first_word.text = min_string(30 - m);
-			second_word.text = "voor half";
+			second_word.text = "vei alver";
 			third_word.text = hour_string(h + 1);
 		} else {
 			first_word.text = min_string(m);
-			second_word.text = "over";
+			second_word.text = "oever";
 			third_word.text = hour_string(h);
 		}
 	}
